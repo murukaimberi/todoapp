@@ -1,0 +1,20 @@
+<div class="side-nav-header shadow text-white">
+  <img alt="Profile" [height]="profilePicSize()" [width]="profilePicSize()" src="assets/images/IMG_0110.jpeg" width="100"/>
+  <div [class.hide-header-text]="collapsed()" class="header-text">
+    <h2>Your Channel</h2>
+    <p>Murukai Gumbo-Mberi</p>
+  </div>
+</div>
+<mat-nav-list style="padding-left: 5px; padding-right: 5px">
+  <a mat-list-item
+     class="menu-item"
+     *ngFor="let item of menuItems()"
+     [routerLink]="item.route"
+     routerLinkActive="selected-menu-item"
+     #routerLinkActive="routerLinkActive"
+     [activated]="routerLinkActive.isActive"
+  >
+    <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+    <span matListItemTitle *ngIf="!collapsed()">{{ item.label }}</span>
+  </a>
+</mat-nav-list>
